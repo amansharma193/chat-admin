@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Wrap the DrawerLayout with FrameLayout to use the same View type for the same view ID
+across the layout configurations
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_view"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnadmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="admin"></Button>
+
+        <Button
+            android:id="@+id/btnuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnadmin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100px"
+            android:text="user"></Button>
+
+    </RelativeLayout>
+</ScrollView>

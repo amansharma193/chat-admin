@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.ChatActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_500"
+        app:titleTextColor="@color/white"
+        android:id="@+id/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomBar"
+        android:id="@+id/messageRecyclerView"
+        android:layout_below="@id/toolbar"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/bottomBar"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:layout_width="0dp"
+            android:id="@+id/message"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:id="@+id/btnSend"
+            android:background="@color/white"
+            android:text="=>"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+</RelativeLayout>

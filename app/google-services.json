@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "424527842383",
+    "project_id": "chatadmin-b04f7",
+    "storage_bucket": "chatadmin-b04f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424527842383:android:96744ee5c7f72806406e3a",
+        "android_client_info": {
+          "package_name": "com.example.chatadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424527842383-06ma7ne9c08lut8ocg3dfvg7dhtsbt9q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatadmin",
+            "certificate_hash": "5633e8691d13ab280adb0a243e2df07b6eeb27f9"
+          }
+        },
+        {
+          "client_id": "424527842383-g7vn95k2i4s487ml68ai33vnn9vd5hvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh4TUBorp588RRSkdtVGmJgOpx8ILYAU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424527842383-g7vn95k2i4s487ml68ai33vnn9vd5hvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
