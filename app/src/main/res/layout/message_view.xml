@@ -86,4 +86,26 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="60dp"
         />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/frndmsgimage"
+        android:scaleType="fitXY"
+        android:layout_below="@id/frndmsgtime"
+        android:visibility="invisible"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+        />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/mymsgimage"
+        android:layout_below="@id/MyMsgTime"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="invisible"
+        />
 </RelativeLayout>

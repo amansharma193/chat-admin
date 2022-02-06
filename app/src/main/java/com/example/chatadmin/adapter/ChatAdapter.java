@@ -1,13 +1,16 @@
 package com.example.chatadmin.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatadmin.R;
 import com.example.chatadmin.bean.Message;
 import com.example.chatadmin.bean.User;
 import com.example.chatadmin.databinding.MessageViewBinding;
@@ -35,23 +38,65 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
         Message message = messages.get(position);
+        hideVisibility(holder.binding);
         if(message.getFrom().equals(currentUser.getId())){
-            holder.binding.frndmsgtime.setVisibility(View.GONE);
-            holder.binding.friendMsg.setVisibility(View.GONE);
-            holder.binding.MyMsg.setVisibility(View.VISIBLE);
-            holder.binding.MyMsgTime.setVisibility(View.VISIBLE);
-            holder.binding.MyMsgTime.setText(message.getTime() + " " + message.getDate());
-            holder.binding.MyMsg.setText(message.getMessage());
+            myMessage(holder.binding,message);
         }else{
-            holder.binding.MyMsgTime.setVisibility(View.GONE);
-            holder.binding.MyMsg.setVisibility(View.GONE);
-            holder.binding.friendMsg.setVisibility(View.VISIBLE);
-            holder.binding.frndmsgtime.setVisibility(View.VISIBLE);
-            holder.binding.frndmsgtime.setText(message.getTime() + " " + message.getDate());
-            holder.binding.friendMsg.setText(message.getMessage());
+            friendMessage(holder.binding,message);
+        }
+    }
+    private void friendMessage(MessageViewBinding binding,Message message){
+        binding.frndmsgtime.setVisibility(View.VISIBLE);
+        binding.frndmsgtime.setText(message.getTime() + " " + message.getDate());
+        if(message.isFile()){
+            binding.frndmsgimage.setVisibility(View.VISIBLE);
+            if(message.getFileType().equals("png") || message.getFileType().equals("jpg") || message.getFileType().equals("jpeg")){
+                setImage(binding.frndmsgimage,context.getResources().getDrawable(R.drawable.ic_image_flat, context.getTheme()));
+            }else if(message.getFileType().equals("pdf")){
+                setImage(binding.frndmsgimage,context.getResources().getDrawable(R.drawable.ic_pdf_flat, context.getTheme()));
+            }else if(message.getFileType().equals("doc") || message.getFileType().equals("docx")){
+                setImage(binding.frndmsgimage,context.getResources().getDrawable(R.drawable.ic_doc_flat, context.getTheme()));
+            }else{
+                setImage(binding.frndmsgimage,context.getResources().getDrawable(R.drawable.ic_document_error_flat, context.getTheme()));
+            }
+        }else {
+            binding.friendMsg.setVisibility(View.VISIBLE);
+            binding.friendMsg.setText(message.getMessage());
         }
     }
 
+    private void myMessage(MessageViewBinding binding,Message message){
+        binding.MyMsgTime.setVisibility(View.VISIBLE);
+        binding.MyMsgTime.setText(message.getTime() + " " + message.getDate());
+        if(message.isFile()){
+            binding.mymsgimage.setVisibility(View.VISIBLE);
+            if(message.getFileType().equals("png") || message.getFileType().equals("jpg") || message.getFileType().equals("jpeg")){
+                setImage(binding.mymsgimage,context.getResources().getDrawable(R.drawable.ic_image_flat,context.getTheme()));
+            }else if(message.getFileType().equals("pdf")){
+                setImage(binding.mymsgimage,context.getResources().getDrawable(R.drawable.ic_pdf_flat, context.getTheme()));
+            }else if(message.getFileType().equals("doc") || message.getFileType().equals("docx")){
+                setImage(binding.mymsgimage,context.getResources().getDrawable(R.drawable.ic_doc_flat, context.getTheme()));
+            }else{
+                setImage(binding.mymsgimage,context.getResources().getDrawable(R.drawable.ic_document_error_flat, context.getTheme()));
+            }
+        }else {
+            binding.MyMsg.setText(message.getMessage());
+            binding.MyMsg.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setImage(ImageView img, Drawable drawable){
+        img.setImageDrawable(drawable);
+    }
+
+    private void hideVisibility(MessageViewBinding binding){
+        binding.frndmsgtime.setVisibility(View.GONE);
+        binding.frndmsgimage.setVisibility(View.GONE);
+        binding.friendMsg.setVisibility(View.GONE);
+        binding.mymsgimage.setVisibility(View.GONE);
+        binding.MyMsgTime.setVisibility(View.GONE);
+        binding.MyMsg.setVisibility(View.GONE);
+    }
     @Override
     public int getItemCount() {
         return messages.size();

@@ -70,7 +70,7 @@ public class ChatActivity extends AppCompatActivity {
                 String date = sd.format(c.getTime());
                 sd = new SimpleDateFormat("hh:mm a");
                 String time = sd.format(c.getTime());
-                Message obj=new Message(message,key,sender.getId(),receiver.getId(),date,time,c.getTimeInMillis(),false);
+                Message obj=new Message(message,key,sender.getId(),receiver.getId(),date,time,c.getTimeInMillis(),false,null);
                 sendMessage(key,obj);
             }
         });
@@ -146,7 +146,7 @@ public class ChatActivity extends AppCompatActivity {
                         String date=sd.format(c.getTime());
                         sd=new SimpleDateFormat("hh:mm a");
                         String time=sd.format(c.getTime());
-                        Message message = new Message(fileurl,msgid,sender.getId(),receiver.getId(),date,time,c.getTimeInMillis(),true);
+                        Message message = new Message(fileurl,msgid,sender.getId(),receiver.getId(),date,time,c.getTimeInMillis(),true,type);
                         sendMessage(msgid,message);
                     }
                 });

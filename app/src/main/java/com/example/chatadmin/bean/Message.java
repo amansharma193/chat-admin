@@ -3,11 +3,11 @@ package com.example.chatadmin.bean;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    private String message,id,from,to,date,time;
+    private String message,id,from,to,date,time,fileType;
     private long timestamp;
     private boolean isFile;
 
-    public Message(String message, String id, String from, String to, String date, String time, long timestamp,boolean isFile) {
+    public Message(String message, String id, String from, String to, String date, String time, long timestamp,boolean isFile,String fileType) {
         this.message = message;
         this.id = id;
         this.from = from;
@@ -16,6 +16,7 @@ public class Message implements Serializable {
         this.timestamp=timestamp;
         this.time = time;
         this.isFile=isFile;
+        this.fileType=fileType;
     }
 
     public long getTimestamp() {
@@ -28,6 +29,14 @@ public class Message implements Serializable {
 
     public boolean isFile() {
         return isFile;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
     public void setFile(boolean file) {
