@@ -5,8 +5,9 @@ import java.io.Serializable;
 public class Message implements Serializable {
     private String message,id,from,to,date,time;
     private long timestamp;
+    private boolean isFile;
 
-    public Message(String message, String id, String from, String to, String date, String time, long timestamp) {
+    public Message(String message, String id, String from, String to, String date, String time, long timestamp,boolean isFile) {
         this.message = message;
         this.id = id;
         this.from = from;
@@ -14,6 +15,7 @@ public class Message implements Serializable {
         this.date = date;
         this.timestamp=timestamp;
         this.time = time;
+        this.isFile=isFile;
     }
 
     public long getTimestamp() {
@@ -24,13 +26,14 @@ public class Message implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public Message(String message, String from, String to, String date, String time) {
-        this.message = message;
-        this.from = from;
-        this.to = to;
-        this.date = date;
-        this.time = time;
+    public boolean isFile() {
+        return isFile;
     }
+
+    public void setFile(boolean file) {
+        isFile = file;
+    }
+
     public Message() {}
 
     public String getMessage() {
