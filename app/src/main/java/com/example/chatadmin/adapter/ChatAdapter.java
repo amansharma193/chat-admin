@@ -1,7 +1,9 @@
 package com.example.chatadmin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,10 +61,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             }else{
                 setImage(binding.frndmsgimage,context.getResources().getDrawable(R.drawable.ic_document_error_flat, context.getTheme()));
             }
+            addFileClickListener(binding.frndmsgimage,message.getMessage());
         }else {
             binding.friendMsg.setVisibility(View.VISIBLE);
             binding.friendMsg.setText(message.getMessage());
         }
+    }
+    private void addFileClickListener(ImageView file,String url){
+        file.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                context.startActivity(in);
+            }
+        });
     }
 
     private void myMessage(MessageViewBinding binding,Message message){
@@ -79,6 +91,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             }else{
                 setImage(binding.mymsgimage,context.getResources().getDrawable(R.drawable.ic_document_error_flat, context.getTheme()));
             }
+            addFileClickListener(binding.mymsgimage,message.getMessage());
         }else {
             binding.MyMsg.setText(message.getMessage());
             binding.MyMsg.setVisibility(View.VISIBLE);
